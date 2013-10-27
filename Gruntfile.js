@@ -11,6 +11,8 @@ module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
   require('time-grunt')(grunt);
 
+  //grunt.loadNpmTasks('grunt-contrib-less');
+
   grunt.initConfig({
     yeoman: {
       // configurable paths
@@ -18,6 +20,10 @@ module.exports = function (grunt) {
       dist: 'dist'
     },
     watch: {
+      less: {
+        files: ['<%= yeoman.app %>/less/*.less'],
+        tasks: ['less:dev']
+      },
       coffee: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
         tasks: ['coffee:dist']
@@ -106,6 +112,13 @@ module.exports = function (grunt) {
         'Gruntfile.js',
         '<%= yeoman.app %>/scripts/{,*/}*.js'
       ]
+    },
+    less: {
+      dev: {
+        files: {
+          '<%= yeoman.app %>/styles/main.css': '<%= yeoman.app %>/less/main.less'
+        }
+      }
     },
     coffee: {
       options: {
@@ -302,6 +315,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'less:dev',
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',
@@ -311,6 +325,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
+    'less:dev',
     'concurrent:test',
     'autoprefixer',
     'connect:test',
@@ -320,6 +335,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'useminPrepare',
+    'less:dev',
     'concurrent:dist',
     'autoprefixer',
     'concat',
