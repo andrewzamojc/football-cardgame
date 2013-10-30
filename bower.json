@@ -9,7 +9,7 @@
     "angular-cookies": "~1.0.7",
     "angular-sanitize": "~1.0.7",
     "bootstrap": "~3.0.0",
-    "angular-library": "http://github.com/andrewzamojc/angular-library.git#0.0.2"
+    "angular-library": "http://github.com/andrewzamojc/angular-library.git#0.0.5"
   },
   "devDependencies": {
     "angular-mocks": "~1.0.7",

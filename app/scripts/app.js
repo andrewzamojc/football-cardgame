@@ -3,7 +3,8 @@
 angular.module('footballCardgameApp', [
   'ngCookies',
   'ngResource',
-  'ngSanitize'
+  'ngSanitize',
+  'angularLibraryApp'
 ])
   .config(function ($routeProvider) {
     $routeProvider
